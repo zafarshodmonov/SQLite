@@ -1,24 +1,28 @@
 import sqlite3
-from faker import Faker
+import json
 
-# Bog‘lanish
-conn = sqlite3.connect("test.db")
+# JSON faylni ochamiz
+with open('questions.json', 'r') as f:
+    questions = json.load(f)
+
+# SQLite bazasiga ulanamiz
+conn = sqlite3.connect('questions.db')
 cursor = conn.cursor()
 
-# Jadval yaratish
-cursor.execute('''
-CREATE TABLE users (
-    id INTEGER PRIMARY KEY,
-    name TEXT,
-    email TEXT,
-    age INTEGER
+# Jadvalni yaratamiz
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS sql_questions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    table_name TEXT,
+    question TEXT,
+    query TEXT
 )
-''')
+""")
 
-# Ma'lumotlar qo‘shish
-fake = Faker()
-data = [(fake.name(), fake.email(), fake.random_int(18, 80)) for _ in range(40)]
+# Ma'lumotlarni qo'shamiz
+for q in questions:
+    cursor.execute("INSERT INTO sql_questions (table_name, question, query) VALUES (?, ?, ?)", 
+                   (q["table"], q["question"], q["query"]))
 
-cursor.executemany("INSERT INTO users (name, email, age) VALUES (?, ?, ?)", data)
 conn.commit()
 conn.close()

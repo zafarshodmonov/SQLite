@@ -1,0 +1,49 @@
+[
+    {"table": "students", "question": "Find students younger than 20", "query": "SELECT * FROM students WHERE age < 20"},
+    {"table": "students", "question": "Get the count of students with grade B", "query": "SELECT COUNT(*) FROM students WHERE grade = 'B'"},
+    {"table": "students", "question": "List students whose name starts with 'A'", "query": "SELECT * FROM students WHERE name LIKE 'A%'"},
+    {"table": "students", "question": "Find students aged between 22 and 25", "query": "SELECT * FROM students WHERE age BETWEEN 22 AND 25"},
+    {"table": "students", "question": "Get the average age of students", "query": "SELECT AVG(age) FROM students"},
+    
+    {"table": "employees", "question": "Find employees with salary above 50,000", "query": "SELECT * FROM employees WHERE salary > 50000"},
+    {"table": "employees", "question": "Get the department with the highest number of employees", "query": "SELECT department, COUNT(*) FROM employees GROUP BY department ORDER BY COUNT(*) DESC LIMIT 1"},
+    {"table": "employees", "question": "List employees whose name contains 'John'", "query": "SELECT * FROM employees WHERE name LIKE '%John%'"},
+    {"table": "employees", "question": "Find employees with salary between 30,000 and 60,000", "query": "SELECT * FROM employees WHERE salary BETWEEN 30000 AND 60000"},
+    {"table": "employees", "question": "Get the sum of all salaries", "query": "SELECT SUM(salary) FROM employees"},
+    
+    {"table": "products", "question": "Find products in the 'Electronics' category", "query": "SELECT * FROM products WHERE category = 'Electronics'"},
+    {"table": "products", "question": "List the top 5 most expensive products", "query": "SELECT * FROM products ORDER BY price DESC LIMIT 5"},
+    {"table": "products", "question": "Find the cheapest product", "query": "SELECT * FROM products ORDER BY price ASC LIMIT 1"},
+    {"table": "products", "question": "Get the total count of products", "query": "SELECT COUNT(*) FROM products"},
+    {"table": "products", "question": "Find products with a price between 50 and 150", "query": "SELECT * FROM products WHERE price BETWEEN 50 AND 150"},
+    
+    {"table": "orders", "question": "Find orders with an amount greater than 3", "query": "SELECT * FROM orders WHERE amount > 3"},
+    {"table": "orders", "question": "Get the total number of unique customers", "query": "SELECT COUNT(DISTINCT customer) FROM orders"},
+    {"table": "orders", "question": "List the top 3 customers who placed the most orders", "query": "SELECT customer, COUNT(*) FROM orders GROUP BY customer ORDER BY COUNT(*) DESC LIMIT 3"},
+    {"table": "orders", "question": "Find orders containing a specific product (e.g., 'Laptop')", "query": "SELECT * FROM orders WHERE product = 'Laptop'"},
+    {"table": "orders", "question": "Get the average order amount", "query": "SELECT AVG(amount) FROM orders"},
+
+    {"table": "students", "question": "Find the oldest student", "query": "SELECT * FROM students ORDER BY age DESC LIMIT 1"},
+    {"table": "employees", "question": "Find employees who earn less than 40,000", "query": "SELECT * FROM employees WHERE salary < 40000"},
+    {"table": "products", "question": "Find all food-related products", "query": "SELECT * FROM products WHERE category = 'Food'"},
+    {"table": "orders", "question": "Find the most frequently ordered product", "query": "SELECT product, COUNT(*) FROM orders GROUP BY product ORDER BY COUNT(*) DESC LIMIT 1"},
+    {"table": "students", "question": "Find students who are exactly 23 years old", "query": "SELECT * FROM students WHERE age = 23"},
+    
+    {"table": "employees", "question": "Find employees with names shorter than 5 characters", "query": "SELECT * FROM employees WHERE LENGTH(name) < 5"},
+    {"table": "products", "question": "Find the number of unique product categories", "query": "SELECT COUNT(DISTINCT category) FROM products"},
+    {"table": "orders", "question": "Find customers who placed more than 2 orders", "query": "SELECT customer FROM orders GROUP BY customer HAVING COUNT(*) > 2"},
+    {"table": "students", "question": "Find students with the grade 'D'", "query": "SELECT * FROM students WHERE grade = 'D'"},
+    {"table": "employees", "question": "Get the department with the lowest average salary", "query": "SELECT department, AVG(salary) FROM employees GROUP BY department ORDER BY AVG(salary) ASC LIMIT 1"},
+
+    {"table": "products", "question": "Find products whose names end with 'phone'", "query": "SELECT * FROM products WHERE name LIKE '%phone'"},
+    {"table": "orders", "question": "Find orders placed by a customer named 'Alice'", "query": "SELECT * FROM orders WHERE customer = 'Alice'"},
+    {"table": "students", "question": "Find the youngest student in the database", "query": "SELECT * FROM students ORDER BY age ASC LIMIT 1"},
+    {"table": "employees", "question": "Find employees who work in HR or Finance", "query": "SELECT * FROM employees WHERE department IN ('HR', 'Finance')"},
+    {"table": "products", "question": "Get the total sum of product prices", "query": "SELECT SUM(price) FROM products"},
+
+    {"table": "orders", "question": "Find the total number of products ordered", "query": "SELECT SUM(amount) FROM orders"},
+    {"table": "students", "question": "Find students whose names contain 'z'", "query": "SELECT * FROM students WHERE name LIKE '%z%'"},
+    {"table": "employees", "question": "Find the employee with the longest name", "query": "SELECT * FROM employees ORDER BY LENGTH(name) DESC LIMIT 1"},
+    {"table": "products", "question": "Find products that cost more than the average product price", "query": "SELECT * FROM products WHERE price > (SELECT AVG(price) FROM products)"},
+    {"table": "orders", "question": "Find customers who ordered more than 5 items in a single order", "query": "SELECT * FROM orders WHERE amount > 5"}
+]
