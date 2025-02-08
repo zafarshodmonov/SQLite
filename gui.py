@@ -1,6 +1,6 @@
 import sqlite3
 import tkinter as tk
-from tkinter import scrolledtext, messagebox
+from tkinter import scrolledtext, messagebox, Toplevel, Label
 from faker import Faker
 import random
 
@@ -60,6 +60,15 @@ def load_question():
     question_label.config(text=f"{current_question + 1}. {question_text}\n(Database: {db_name})\nTable Schema:\n{schema_info}")
     sql_text.delete("1.0", tk.END)
 
+def show_correct_answer(correct_query):
+    answer_window = Toplevel(root)
+    answer_window.title("Correct Answer")
+    Label(answer_window, text="Correct SQL Query:", font=("Arial", 12, "bold")).pack(pady=5)
+    answer_text = scrolledtext.ScrolledText(answer_window, height=5, width=60, font=("Arial", 10))
+    answer_text.pack(pady=5)
+    answer_text.insert(tk.END, correct_query)
+    answer_text.config(state=tk.DISABLED)
+
 def check_answer():
     global current_question
     db_name, _, correct_query = questions_list[current_question]
@@ -76,6 +85,9 @@ def check_answer():
         
         result_message = "✅ Correct!" if user_result == correct_result else "❌ Incorrect! Try again."
         messagebox.showinfo("Result", result_message)
+        
+        if result_message.startswith("❌"):
+            show_correct_answer(correct_query)
     except Exception as e:
         messagebox.showerror("Error", str(e))
 
