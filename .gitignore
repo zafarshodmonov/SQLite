@@ -174,5 +174,3 @@ cython_debug/
 *.sqlite3
 *.db
 
-*.json
-
